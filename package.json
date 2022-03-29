@@ -1,0 +1,72 @@
+{
+  "name": "boilerplate",
+  "version": "0.0.2",
+  "description": "Magic tools and Terra-firma for Open-Source JS projects !",
+  "main": "index.js",
+  "scripts": {
+    "build": "echo \"WARN: you should change the build task\" && exit 1",
+    "test": "echo \"ERROR: no test specified\" && exit 1",
+    "cz": "git-cz",
+    "cc": "conventional-changelog",
+    "release": "standard-version",
+    "prepare": "husky install"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kane-thornwyrd/boilerplate.git"
+  },
+  "author": "Jean-cédric Thérond <jean.cedric.t@gmail.com>",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/kane-thornwyrd/boilerplate/issues"
+  },
+  "homepage": "https://github.com/kane-thornwyrd/boilerplate#readme",
+  "devDependencies": {
+    "@commitlint/config-conventional": "16.2.1",
+    "commitizen": "4.2.4",
+    "commitlint": "16.2.3",
+    "cz-conventional-changelog": "3.3.0",
+    "git-precommit-checks": "3.0.7",
+    "husky": "7.0.4",
+    "precise-commits": "1.0.2",
+    "prettier": "2.6.1",
+    "standard-version": "9.3.2"
+  },
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ]
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog",
+      "maxHeaderWidth": 100,
+      "maxLineWidth": 100
+    }
+  },
+  "husky": {
+    "hooks": {
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
+      "pre-commit": "git-precommit-checks && precise-commits"
+    }
+  },
+  "hooks": {
+    "pre-commit": [
+      {
+        "message": "You’ve got leftover conflict markers",
+        "regex": "/^[<>|=]{4,}/m"
+      },
+      {
+        "filter": "\\.jsx?$",
+        "message": "You’ve got leftover `console.log`",
+        "regex": "console\\.log"
+      },
+      {
+        "filter": "\\.jsx?$",
+        "message": "You have unfinished devs",
+        "nonBlocking": "true",
+        "regex": "(?:FIXME|TODO)"
+      }
+    ]
+  }
+}
