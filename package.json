@@ -1,6 +1,6 @@
 {
   "name": "boilerplate",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Magic tools and Terra-firma for Open-Source JS projects !",
   "main": "index.js",
   "scripts": {
